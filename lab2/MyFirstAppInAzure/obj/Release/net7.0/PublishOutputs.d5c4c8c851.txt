@@ -1,0 +1,7 @@
+C:\Users\akusiaki\Desktop\IoT23 files\IoT23_26771\lab2\MyFirstAppInAzure\publish\MyFirstAppInAzure.exe
+C:\Users\akusiaki\Desktop\IoT23 files\IoT23_26771\lab2\MyFirstAppInAzure\publish\appsettings.Development.json
+C:\Users\akusiaki\Desktop\IoT23 files\IoT23_26771\lab2\MyFirstAppInAzure\publish\appsettings.json
+C:\Users\akusiaki\Desktop\IoT23 files\IoT23_26771\lab2\MyFirstAppInAzure\publish\MyFirstAppInAzure.dll
+C:\Users\akusiaki\Desktop\IoT23 files\IoT23_26771\lab2\MyFirstAppInAzure\publish\MyFirstAppInAzure.deps.json
+C:\Users\akusiaki\Desktop\IoT23 files\IoT23_26771\lab2\MyFirstAppInAzure\publish\MyFirstAppInAzure.runtimeconfig.json
+C:\Users\akusiaki\Desktop\IoT23 files\IoT23_26771\lab2\MyFirstAppInAzure\publish\MyFirstAppInAzure.pdb
