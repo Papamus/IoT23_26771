@@ -1,0 +1,12 @@
+POST https://cdv-iot-functionapp-lab3.azurewebsites.net/api/PeopleFN?code=bhqMjyO063iTMEFqn5yLxA3gbmWJeUDO0q4tIzSzqy4jAzFucL1IUg== HTTP/1.1
+Content-Type: application/json
+
+{
+    "FirstName": "Adam",
+    "LastName": "Nowak"
+}
+
+GET https://cdv-iot-functionapp-lab3.azurewebsites.net/api/PeopleFN?code=bhqMjyO063iTMEFqn5yLxA3gbmWJeUDO0q4tIzSzqy4jAzFucL1IUg== HTTP/1.1
+Content-Type: application/json
+
+{}
