@@ -1,4 +1,3 @@
-
 namespace CdvAzure.Functions{
 
     public class PeopleService{
@@ -40,10 +39,7 @@ namespace CdvAzure.Functions{
             return people;
         }
 
-        public static implicit operator PeopleService(DatabasePeopleService v)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 
     public class Person{

@@ -10,3 +10,19 @@ GET https://cdv-iot-functionapp-lab3.azurewebsites.net/api/PeopleFN?code=bhqMjyO
 Content-Type: application/json
 
 {}
+
+DELETE https://cdv-iot-functionapp-lab3.azurewebsites.net/api/PeopleFN?code=bhqMjyO063iTMEFqn5yLxA3gbmWJeUDO0q4tIzSzqy4jAzFucL1IUg== HTTP/1.1
+Content-Type: application/json
+
+{
+    "Id": 1
+}
+
+PUT https://cdv-iot-functionapp-lab3.azurewebsites.net/api/PeopleFN?code=bhqMjyO063iTMEFqn5yLxA3gbmWJeUDO0q4tIzSzqy4jAzFucL1IUg== HTTP/1.1
+Content-Type: application/json
+
+{
+    "Id": 1,
+    "FirstName": "Adam",
+    "LastName": "Kus"
+}

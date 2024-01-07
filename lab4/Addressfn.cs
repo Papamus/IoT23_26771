@@ -1,62 +1,60 @@
-using System;
-using System.IO;
 using System.Net;
 using System.Text.Json;
+using CdvAzure.Functions;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 
-namespace CdvAzure.Functions
+namespace lab4.cdv
 {
-    public class PeopleFN
+    public class Addressfn
     {
         private readonly ILogger _logger;
 
-        private readonly DatabasePeopleService peopleService;
+        private readonly AddressService addressService;
 
-        private readonly PeopleService peopleService1;
-
-        public PeopleFN(ILoggerFactory loggerFactory, DatabasePeopleService peopleService, PeopleService peopleService1)
+        public Addressfn(ILoggerFactory loggerFactory, AddressService addressService)
         {
-            _logger = loggerFactory.CreateLogger<PeopleFN>();
-            this.peopleService = peopleService;
-            this.peopleService1 = peopleService1;
+            _logger = loggerFactory.CreateLogger<Addressfn>();
+            this.addressService = addressService;
         }
 
-        [Function("PeopleFN")]
+        [Function("Addressfn")]
         public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", "delete", "put")] HttpRequestData req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
             var response = req.CreateResponse(HttpStatusCode.OK);
-
-            switch  (req.Method){
+        
+             switch  (req.Method){
                 case "POST":
                     StreamReader reader = new StreamReader(req.Body, System.Text.Encoding.UTF8);
                     var json = reader.ReadToEnd();
-                    var person = JsonSerializer.Deserialize<Person>(json);
-                    var res =  peopleService.AddPerson(person);
+                    var address = JsonSerializer.Deserialize<Address>(json);
+                    var res =  addressService.Add(address.City, address.AddressLine);
                     response.WriteAsJsonAsync(res);
                     break;
                 case "PUT":
                     StreamReader putReader = new StreamReader(req.Body, System.Text.Encoding.UTF8);
                     var putJson = putReader.ReadToEnd();
-                    var updatedPerson = JsonSerializer.Deserialize<Person>(putJson);
-                    var putPerson = peopleService1.Update(updatedPerson.Id, updatedPerson.FirstName, updatedPerson.LastName);
-                    response.WriteAsJsonAsync(putPerson);
+                    var updatedAddress = JsonSerializer.Deserialize<Address>(putJson);
+                    var updated = addressService.Update(updatedAddress.Id, updatedAddress.City, updatedAddress.AddressLine);
+                    response.WriteAsJsonAsync(updated);
                     break;
                 case "GET":
-                    var people = peopleService.GetPeople();
-                    response.WriteAsJsonAsync(people);
+                    var getaddress = addressService.Get();
+                    response.WriteAsJsonAsync(getaddress);
                     break;
                 case "DELETE":
                     StreamReader deleteReader = new StreamReader(req.Body, System.Text.Encoding.UTF8);
                     var deleteJson = deleteReader.ReadToEnd();
-                    var personToDelete = JsonSerializer.Deserialize<Person>(deleteJson);
-                    peopleService1.Delete(personToDelete.Id);
-                    response.WriteString("Person deleted successfully");
+                    var addressToDelete = JsonSerializer.Deserialize<Address>(deleteJson);
+                    addressService.Delete(addressToDelete.Id);
+                    response.WriteString("Address deleted successfully");
                     break;    
             }
+
+
             return response;
         }
     }
