@@ -11,7 +11,7 @@ var host = new HostBuilder()
     .ConfigureServices(services => {
         services.AddDbContext<PeopleDB>(options =>
         {
-            var connectionString = "Server=tcp:functionappserver.database.windows.net,1433;Initial Catalog=lab3dbfunctionapp;Persist Security Info=False;User ID=adam;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
+            var connectionString = "Server=tcp:functionappserver.database.windows.net,1433;Initial Catalog=lab3dbfunctionapp;Persist Security Info=False;User ID=adam;Password=1@qwerty;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
             options.UseSqlServer(connectionString);
         });
         services.AddApplicationInsightsTelemetryWorkerService();

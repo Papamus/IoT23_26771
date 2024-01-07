@@ -36,12 +36,22 @@ namespace CdvAzure.Functions
                     response.WriteAsJsonAsync(res);
                     break;
                 case "PUT":
+                    StreamReader putReader = new StreamReader(req.Body, System.Text.Encoding.UTF8);
+                    var putJson = putReader.ReadToEnd();
+                    var updatedPerson = JsonSerializer.Deserialize<Person>(putJson);
+                    var updated = peopleService.Update(updatedPerson.Id, updatedPerson.FirstName, updatedPerson.LastName);
+                    response.WriteAsJsonAsync(updated);
                     break;
                 case "GET":
                     var people = peopleService.Get();
                     response.WriteAsJsonAsync(people);
                     break;
                 case "DELETE":
+                    StreamReader deleteReader = new StreamReader(req.Body, System.Text.Encoding.UTF8);
+                    var deleteJson = deleteReader.ReadToEnd();
+                    var personToDelete = JsonSerializer.Deserialize<Person>(deleteJson);
+                    peopleService.Delete(personToDelete.Id);
+                    response.WriteString("Person deleted successfully");
                     break;    
             }
             return response;

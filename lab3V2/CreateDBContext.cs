@@ -7,7 +7,7 @@ public class DatabaseContextContextFactory : IDesignTimeDbContextFactory<PeopleD
     public PeopleDB CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<PeopleDB>();
-        optionsBuilder.UseSqlServer("Server=tcp:functionappserver.database.windows.net,1433;Initial Catalog=lab3dbfunctionapp;Persist Security Info=False;User ID=adam;Password={1@qwerty};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30");
+        optionsBuilder.UseSqlServer("Server=tcp:functionappserver.database.windows.net,1433;Initial Catalog=lab3dbfunctionapp;Persist Security Info=False;User ID=adam;Password=1@qwerty;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30");
 
         return new PeopleDB(optionsBuilder.Options);
     }

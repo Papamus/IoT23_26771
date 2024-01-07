@@ -1,5 +1,6 @@
 using CdvAzure.Functions;
 using Lab3.Database;
+using Lab3.Database.Entities;
 
 public class DatabasePeopleService : PeopleService
 {
@@ -8,6 +9,19 @@ public class DatabasePeopleService : PeopleService
     public DatabasePeopleService(PeopleDB db)
     {
         this.db = db;
+    }
+
+    public Person AddPerson(Person person)
+    {
+        var entity = new PersonEntity
+        {
+            FirstName = person.FirstName,
+            LastName = person.LastName
+        };
+        db.People.Add(entity);
+        db.SaveChanges();
+        person.Id = entity.Id;
+        return person;
     }
 
     public IEnumerable<Person> GetPeople()
