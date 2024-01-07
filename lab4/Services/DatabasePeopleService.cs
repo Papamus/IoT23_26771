@@ -1,8 +1,9 @@
 using CdvAzure.Functions;
+using lab3;
 using Lab3.Database;
 using Lab3.Database.Entities;
 
-public class DatabasePeopleService : PeopleService
+public class DatabasePeopleService : IPeopleService
 {
     private readonly PeopleDB db;
 
@@ -16,13 +17,15 @@ public class DatabasePeopleService : PeopleService
         var entity = new PersonEntity
         {
             FirstName = person.FirstName,
-            LastName = person.LastName
+            LastName = person.LastName,
+            AddressEntityId = person.AddressEntityId
         };
         db.People.Add(entity);
         db.SaveChanges();
         person.Id = entity.Id;
         return person;
     }
+
 
     public IEnumerable<Person> GetPeople()
     {
@@ -36,7 +39,18 @@ public class DatabasePeopleService : PeopleService
         return peopleList;
     }
 
-
-
-
+     public Person MapToDTO(PersonEntity entity)
+     {
+        return new Person
+        {
+            FirstName = entity.FirstName,
+            LastName = entity.LastName,
+            Id = entity.Id
+        };
+    }
+    Person IPeopleService.FindPerson(int id)
+    {
+       var person = db.People.First(w => w.Id == id);
+       return MapToDTO(person);
+    }
 }

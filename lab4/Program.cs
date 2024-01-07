@@ -16,8 +16,8 @@ var host = new HostBuilder()
         });
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
-        services.AddSingleton<PeopleService>();
-        
+        services.AddSingleton<DatabasePeopleService>();
+        services.AddSingleton<DatabaseAddressService>();
     })
     .Build();
 

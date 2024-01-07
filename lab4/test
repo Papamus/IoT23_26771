@@ -7,6 +7,12 @@ Content-Type: application/json
 }
 
 
+GET https://cdv-iot-functionapp-lab3.azurewebsites.net/api/Addressfn?code=YwQdmeZLEAkNVJaNHPhj0YaxZ5J-T207EdCFY2vO7O1KAzFullCiag== HTTP/1.1
+Content-Type: application/json
+
+{}
+
+
 POST https://cdv-iot-functionapp-lab3.azurewebsites.net/api/PeopleFN?code=bhqMjyO063iTMEFqn5yLxA3gbmWJeUDO0q4tIzSzqy4jAzFucL1IUg== HTTP/1.1
 Content-Type: application/json
 

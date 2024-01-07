@@ -39,7 +39,7 @@ namespace Lab3.Database{
 
 
         public DbSet<PersonEntity> People{get;set;}
-        public DbSet<PersonEntity> Address{get;set;}
+        public DbSet<AddressEntity> Address{get;set;}
 
 
 
